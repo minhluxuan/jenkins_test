@@ -10,10 +10,10 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                    sh 'echo "123" | sudo -S docker build -t my-node-app .'
+                    sh 'sudo -S docker build -t my-node-app .'
                     
                     // Run Docker container
-                    sh 'echo "123" | sudo -S docker run -d --name my-node-app-container -p 3000:3000 my-node-app'
+                    sh 'sudo -S docker run -d --name my-node-app-container -p 3000:3000 my-node-app'
                 }
             }
         }
