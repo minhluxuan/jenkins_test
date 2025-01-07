@@ -1,19 +1,20 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Install stage') {
             steps {
-                echo 'Building...'
+                sh 'npm install'
             }
         }
-        stage('Test') {
+        stage('Dockerize stage') {
             steps {
-                echo 'Testing...'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
+                script {
+                    // Build Docker image
+                    sh 'docker build -t my-node-app .'
+                    
+                    // Run Docker container
+                    sh 'docker run -d --name my-node-app-container -p 3000:3000 my-node-app'
+                }
             }
         }
     }
