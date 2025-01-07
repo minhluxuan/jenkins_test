@@ -1,5 +1,5 @@
 # Sử dụng image chính thức của Node.js
-FROM node:14
+FROM node:14-alpine
 
 # Thiết lập thư mục làm việc trong container
 WORKDIR /usr/src/app
